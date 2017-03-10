@@ -1,0 +1,6 @@
+---
+
+- name: bounce serf
+  service:
+    name: serf
+    state: restarted

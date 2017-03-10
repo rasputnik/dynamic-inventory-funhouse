@@ -1,0 +1,5 @@
+---
+
+- name: apply serf_tags to agents (non-persistent)
+  command: "{{ serf_binary }} tags -set {{ item.key }}={{ item.value }}"
+  with_dict: "{{ serf_tags }}"

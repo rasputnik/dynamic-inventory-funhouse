@@ -1,0 +1,6 @@
+---
+
+- hosts: web:db
+  become: yes
+  roles:
+    - motd

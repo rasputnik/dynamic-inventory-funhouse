@@ -1,0 +1,7 @@
+---
+
+- hosts: web:db
+  become: yes
+  roles:
+    - serf
+    - tags

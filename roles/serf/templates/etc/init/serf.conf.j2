@@ -1,0 +1,14 @@
+# Serf (Upstart unit)
+description "Serf Agent"
+start on stopped rc RUNLEVEL=[2345]
+stop on runlevel [06]
+
+env SERF={{ serf_binary }}
+env SERF_CONFIG={{ serf_config }}
+
+# messages will end up in syslog
+exec $SERF agent -config-file $SERF_CONFIG
+
+respawn
+respawn limit 10 10
+kill timeout 10

@@ -1,0 +1,6 @@
+---
+
+- name: do the motd
+  template:
+    src: etc/motd.j2
+    dest: /etc/motd

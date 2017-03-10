@@ -1,0 +1,6 @@
+---
+
+serf_binary: /usr/local/bin/serf
+serf_config: /etc/serf.conf
+serf_interface: eth1
+serf_cluster: mycluster

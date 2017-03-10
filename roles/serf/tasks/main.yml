@@ -1,0 +1,28 @@
+---
+
+- name: upload serf to {{ serf_binary }}
+  copy:
+    src: serf
+    dest: "{{ serf_binary }}"
+    owner: root
+    group: root
+    mode: 0555
+  notify: bounce serf
+
+- name: serf config and upstart file
+  template:
+    src: ".{{ item }}.j2"  
+    dest: "{{ item }}"
+    owner: root
+    group: root
+    mode: 0444
+  with_items:
+    - "{{ serf_config }}"
+    - /etc/init/serf.conf
+  notify: bounce serf
+
+- name: serf service
+  service:
+    name: serf
+    state: started
+    enabled: yes
